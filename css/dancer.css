@@ -1,0 +1,380 @@
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 2.28rem;
+  width: 100%;
+  background: #1E1E1E;
+}
+
+.header_left,
+.header_left>a>img {
+  width: 2.91rem;
+  height: 1.44rem;
+}
+
+.header_left {
+  margin-left: 0.64rem;
+}
+
+.header_right {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 5.02rem;
+  height: 0.65rem;
+  margin-right: 0.48rem;
+  background: #1E1E1E;
+  border-radius: 3.7px;
+}
+
+.apple,
+.android,
+.apple a img,
+.android a img {
+  width: 2rem;
+  height: 0.65rem;
+}
+
+.code,
+.code a img {
+  width: 0.65rem;
+  height: 0.65rem;
+  background: #1E1E1E;
+  border-radius: 3.7px;
+}
+
+.piclist {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-content: center;
+  width: 100%;
+  overflow: hidden;
+}
+
+.piclist li {
+  position: relative;
+  align-content: center;
+}
+
+.pic1 {
+  height: 4.25rem;
+  width: 33.3%;
+}
+
+.pic2 {
+  width: 33.3%;
+  height: 4.25rem;
+}
+
+.pic3 {
+  width: 33.4%;
+  height: 8.5rem;
+  align-self: center;
+  margin-top: -8.5rem;
+}
+
+.pic4 {
+  width: 33.3%;
+  height: 4.25rem;
+  margin-top: -8.5rem;
+  align-self: flex-end;
+}
+
+
+.pic5 {
+  width: 33.3%;
+  height: 4.25rem;
+  align-self: flex-end;
+}
+
+.pic6 {
+  width: 50%;
+  height: 9.6rem;
+}
+
+.pic7 {
+  width: 25%;
+  height: 4.8rem;
+  margin-top: -9.6rem;
+  margin-left: 50%;
+}
+
+.pic8 {
+  width: 25%;
+  height: 4.8rem;
+  margin-left: 50%;
+}
+
+.pic9 {
+  width: 25%;
+  height: 4.8rem;
+  align-self: flex-end;
+  margin-top: -9.6rem;
+}
+
+.pic10 {
+  width: 25%;
+  height: 4.8rem;
+  align-self: flex-end;
+}
+
+.piclist li img {
+  width: 100%;
+  height: 100%;
+}
+
+.picmask {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.35;
+}
+.piclist li .title {
+  opacity: 0;
+  width: 100%;
+  height: 0.70rem;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  transition: opacity 2s;
+}
+
+.piclist li:hover .title {
+  opacity: 1;
+}
+
+.piclist li .title p {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  height: 0.70rem;
+  background: #000000;
+  opacity: 0.4;
+}
+
+.piclist li .title p span.textcontent {
+  display: block;
+  width: 0;
+  flex-grow: 1;
+  height: 0.7rem;
+  font-family: PingFangSC-Light;
+  font-size: 0.34rem;
+  line-height: 0.7rem;
+  color: #FFFFFF;
+  letter-spacing: 0.0052rem;
+  text-align: left;
+  padding-left: 0.32rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.play_pic {
+  display: block;
+  width: 0.48rem;
+  height: 0.48rem;
+  margin-right: 0.31rem;
+  background: url("../img/play.png") no-repeat center center;
+  background-size: cover;
+}
+
+div.playlist {
+  position: absolute;
+  right: 0;
+  top: 2.28rem;
+  width: 1.06rem;
+  height: 1.06rem;
+  background-color: rgba(0, 0, 0, 0.75);
+  cursor: pointer;
+  z-index: 2;
+}
+
+div.playlist img {
+  width: 100%;
+  height: 100%;
+}
+
+@media screen and (max-width: 1024px) {
+  div.foldlist {
+    position: absolute;
+    right: 0;
+    top: 2.28rem;
+    width: 8.36rem;
+    /* height: 9.28rem; */
+    opacity: 0.75;
+    background: #000000;
+    cursor: pointer;
+    z-index: 2;
+  }
+
+  div.foldlist div {
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 100%;
+    height: 0.41rem;
+    cursor: pointer;
+  }
+
+  div.foldlist div img {
+    position: absolute;
+    right: 0.16rem;
+    top: 0.16rem;
+    width: 0.41rem;
+    height: 0.41rem;
+    cursor: pointer;
+    z-index: 3;
+  }
+
+  ul.items {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 7.06rem;
+    height: 8.68rem;
+    padding-top: 0.6rem;
+    padding-left: 0.65rem;
+    padding-right: 0.65rem;
+    opacity: 0.75;
+    overflow-y: scroll;
+    z-index: 2;
+  }
+
+  ul.items>li {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: 0.45rem;
+    line-height: 0.45rem;
+    padding-bottom: 0.4rem;
+  }
+
+  ul.items li a {
+    font-family: PingFangSC-Regular;
+    font-size: 0.32rem;
+    color: #FFFFFF;
+    letter-spacing: 0.0049rem;
+    text-overflow: ellipsis;
+    text-align: left;
+    overflow: hidden;
+    white-space: nowrap;
+    line-height: 1;
+  }
+
+  ul.items li span {
+    font-family: PingFangSC-Regular;
+    font-size: 0.24rem;
+    color: #FFFFFF;
+    letter-spacing: 0.0037rem;
+    line-height: 1;
+  }
+
+}
+
+@media screen and (min-width: 1024px) {
+  div.foldlist {
+    position: absolute;
+    right: 0;
+    top: 2.28rem;
+    width: 4.18rem;
+    /* height: 9.28rem; */
+    opacity: 0.75;
+    background: #000000;
+    cursor: pointer;
+    z-index: 2;
+  }
+
+  div.foldlist div {
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 100%;
+    height: 0.41rem;
+    cursor: pointer;
+  }
+
+  div.foldlist div img {
+    position: absolute;
+    right: 0.16rem;
+    top: 0.16rem;
+    width: 0.25rem;
+    height: 0.25rem;
+    cursor: pointer;
+    z-index: 3;
+  }
+
+  ul.items {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 3.55rem;
+    height: 8.5rem;
+    padding-top: 0.78rem;
+    padding-left: 0.3rem;
+    padding-right: 0.33rem;
+    opacity: 0.75;
+    /* overflow-y: scroll; */
+    z-index: 2;
+  }
+
+  ul.items li {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: 0.45rem;
+    line-height: 0.45rem;
+    padding-bottom: 0.4rem;
+  }
+
+  ul.items li a {
+    text-align: left;
+    font-family: PingFangSC-Regular;
+    font-size: 0.32rem;
+    color: #FFFFFF;
+    letter-spacing: 0.0049rem;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    line-height: 0.45rem;
+  }
+
+  ul.items li span {
+    font-family: PingFangSC-Regular;
+    font-size: 0.24rem;
+    color: #FFFFFF;
+    letter-spacing: 0.0037rem;
+    line-height: 1;
+  }
+
+}
+
+.videomask {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.6);
+  z-index: 9;
+}
+
+.videomask video {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: 10.5rem;
+  height: 6.4rem;
+  margin-top: -3.2rem;
+  margin-left: -5.25rem;
+  z-index: 10;
+}

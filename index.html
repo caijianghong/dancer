@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/dancer.css">
+  <title>dancer</title>
+</head>
+
+<body>
+  <div id="app">
+    <header>
+      <div class="header_left"><a href="#"><img src="img/logo.png" alt="图片加载失败"></a></div>
+      <div class="header_right">
+        <div class="apple"><a href="#"><img src="img/apple.png" alt="图片加载失败"></a></div>
+        <div class="android"><a href="#"><img src="img/android.png" alt="图片加载失败"></a></div>
+        <div class="code"><a href="#"><img src="img/code.png" alt="图片加载失败"></a></div>
+      </div>
+    </header>
+    <ul class="piclist">
+      <li v-for="(item,index) in picList" :class="className+(index+1)">
+        <img :src="'img/'+item.imgsrc" alt="图片加载失败">
+        <div class="picmask" :style="{background:item.picBackground}"></div>
+        <div class="title">
+          <p><span class="textcontent">{{item.text}}</span><span class="play_pic" @click="toPlay(item)"></span></p>
+        </div>
+      </li>
+    </ul>
+    <div class="playlist" @click="listShow" v-show="isShow"><img src="img/playlist.png" alt=""></div>
+    <div class="foldlist" v-show="!isShow">
+      <div @click="listFold"><img src="img/folded.png" alt="图片加载失败"></div>
+      <ul class="items">
+        <li v-for="(item,index) in picList">
+          <a href="#" @click="toPlay(item)">{{item.content}}</a><span>{{item.time}}</span>
+        </li>
+      </ul>
+    </div>
+    <div class="videomask" v-show="videoShow" @click="videoHide">
+      <video @click.stop :src="curPlayUrl" id="myvideo" controls="true" autoplay="true" v-show="videoShow"></video>
+    </div>
+  </div>
+  <script type="text/javascript" src="js/common.js"></script>
+  <script type="text/javascript" src="js/vue.js"></script>
+  <script>
+    var app = new Vue({
+      el: "#app",
+      data: {
+        picList: [
+          {
+            id: 1001,
+            imgsrc: 'pic1.png',
+            picBackground:'#E9988A',
+            text: '民族民间舞训练',
+            content: "1.基本功训练",
+            time: "08:45",
+            videoUrl: "http://p0rwwxijh.bkt.clouddn.com/R58jwyQ8-zzWKRZHQc4X3eEnvnk=/lkB_OxfiLuLKuY6B_ZZ6k7108cWO"
+          },
+          {
+            id: 1002,
+            imgsrc: 'pic2.png',
+            picBackground:'#582AD5',
+            text: '民族民间舞训练2',
+            content: "2.技术技巧训练",
+            time: "08:45",
+            videoUrl: "http://p0rwwxijh.bkt.clouddn.com/tlOMSeURcFAIR-FXIUPq3q2aTkI=/lpz3Zn-pnOkMRXcI5efLAcxPO-O2"
+          },
+          {
+            id: 1003,
+            imgsrc: 'pic3.png',
+            picBackground:'#A137FF',
+            text: '民族民间舞训练3',
+            content: "3.芭蕾舞训练",
+            time: "08:45",
+            videoUrl: "http://p0rwwxijh.bkt.clouddn.com/R58jwyQ8-zzWKRZHQc4X3eEnvnk=/lphoaW9_EcONcc7C3KZWQBTrGaZu"
+          },
+          {
+            id: 1004,
+            imgsrc: 'pic10.png',
+            picBackground:'#4838BE',
+            text: '民族民间舞训练4',
+            content: "4.民族舞训练",
+            time: "08:45",
+            videoUrl: "http://p0rwwxijh.bkt.clouddn.com/R58jwyQ8-zzWKRZHQc4X3eEnvnk=/lnAHIz1-02kSNW9j6P0LlnEkQH5_"
+          },
+          {
+            id: 1005,
+            imgsrc: 'pic4.png',
+            picBackground:'#D34176',
+            text: '民族民间舞训练5',
+            content: "5.世界芭蕾大赛",
+            time: "08:45",
+            videoUrl: "http://p0rwwxijh.bkt.clouddn.com/R58jwyQ8-zzWKRZHQc4X3eEnvnk=/lgWnCe6ypmqXhghoy6UdV6qMxWjZ"
+          },
+          {
+            id: 1006,
+            imgsrc: 'pic5.jpeg',
+            picBackground:'#8283FF',
+            text: '民族民间舞训练6',
+            content: "6.名教师教学",
+            time: "08:45",
+            videoUrl: "http://p0rwwxijh.bkt.clouddn.com/R58jwyQ8-zzWKRZHQc4X3eEnvnk=/lv4TigZe3Hk_WU6A8OOjF34gCvVp"
+          },
+          {
+            id: 1007,
+            imgsrc: 'pic6.png',
+            picBackground:'#C81E46',
+            text: '民族民间舞训练7',
+            content: "7.教学研究课",
+            time: "08:45",
+            videoUrl: "http://p0rwwxijh.bkt.clouddn.com/R58jwyQ8-zzWKRZHQc4X3eEnvnk=/lvSNwDO31LnRSfgIUTlE7xe5ggKo"
+          },
+          {
+            id: 1008,
+            imgsrc: 'pic7.jpeg',
+            picBackground:'#3E2CFF',
+            text: '民族民间舞训练8',
+            content: "8.北京舞蹈学院赛",
+            time: "08:45",
+            videoUrl: "http://p0rwwxijh.bkt.clouddn.com/R58jwyQ8-zzWKRZHQc4X3eEnvnk=/lvlYWNf_H7eO1Su0ulnFG4pYv9B-"
+          },
+          {
+            id: 1009,
+            imgsrc: 'pic8.png',
+            picBackground:'#5934FF',
+            text: '民族民间舞训练9',
+            content: "9.北京舞蹈",
+            time: "08:45",
+            videoUrl: "http://p0rwwxijh.bkt.clouddn.com/R58jwyQ8-zzWKRZHQc4X3eEnvnk=/lhyxdhUxkspuRV_goeuufxH8q1iJ"
+          },
+          {
+            id: 1010,
+            imgsrc: 'pic9.jpeg',
+            picBackground:'rgb(199, 111, 30)',
+            text: '民族民间舞训练10',
+            content: "10.北京舞蹈",
+            time: "08:45",
+            videoUrl: "http://p0rwwxijh.bkt.clouddn.com/R58jwyQ8-zzWKRZHQc4X3eEnvnk=/lkmNqaoMZBc2b6E14Fgy0fB4Cm68"
+          }
+        ],
+        className: "pic",
+        isShow: true,
+        videoShow: false,
+        curPlayUrl: ''
+      },
+      methods: {
+        listShow: function () {
+          this.isShow = false;
+        },
+        listFold: function () {
+          this.isShow = true;
+        },
+        toPlay: function (curObj) {
+          if (curObj.videoUrl===""||!curObj.videoUrl) {
+            this.curPlayUrl = "";
+          }else{
+            this.curPlayUrl = curObj.videoUrl;
+          }
+          this.videoShow = true;
+        },
+        videoHide: function () {
+          this.videoShow = false;
+        }
+      }
+    });
+  </script>
+</body>
+
+</html>
